@@ -1,4 +1,4 @@
-package Practica;
+package practica6;
 import java.util.Scanner;
 
 public class CapturaEntrada
@@ -13,12 +13,12 @@ public class CapturaEntrada
 		
     }
     
-    public static float capturarFloat(String msg)
+    public static double capturarDouble(String msg)
     {
-    	float cap;
+    	double cap;
         Scanner sc = new Scanner(System.in);
 		System.out.print(""+msg+": ");
-		cap = sc.nextFloat();
+		cap = sc.nextDouble();
 		return cap;
     }
     
@@ -28,6 +28,15 @@ public class CapturaEntrada
         Scanner sc = new Scanner(System.in);
 		System.out.print(""+msg+": ");
 		cap = sc.nextLine();
+		return cap;
+    }
+    
+    public static boolean capturarBoolean(String msg)
+    {
+    	boolean cap;
+        Scanner sc = new Scanner(System.in);
+		System.out.print(""+msg+": ");
+		cap = sc.nextBoolean();
 		return cap;
     }
 }//Fin clase CapturaEntrada
