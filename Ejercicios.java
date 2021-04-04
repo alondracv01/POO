@@ -1,71 +1,49 @@
-package ejercicios;
-import java.util.Random;
+package practica6;
+
 public class Ejercicios {
 	public static void main(String[] args) {
 		//Ejercicio 1
-		int[] integerArray1 = {1,20,3,44,5,60,7,88,9,100};
+		Animal pez = new Animal("Tiburoncin", 2, "Macho", false, false);
+		Perro perro = new Perro("Daisy", 5, "Hembra", true, false);
+		Gato gato = new Gato("Kinino", 3, "Macho", false, false);
+		
 		//Ejercicio 2
-		int[] integerArray2;
-		Random gen = new Random();
+		Animal animal = new Perro("Sam", 5, "Macho", true, true);
+		
 		//Ejercicio 3
-		Animal perro = new Animal("Daisy", 4);
-		Animal gato  = new Animal("Tom", 3);
-		Animal pez = new Animal("Tiburoncin", 1);
-		Animal[] arreglo1 = {perro, gato, pez};
-		Animal[] arreglo2 = {new Animal("Sam", 5), new Animal("Kinino", 2), new Animal("Nemo", 2)};
-		//Ejercicio 5
-		Pez pez1 = new Pez("Dory", 2, "Cirujano Azul");
+		Animal [] animalArray = new Animal[3];
+		animalArray[0] = new Animal("Pez", 1, "Macho", false, false);
+		animalArray[1] = new Perro("Gochis", 4, "Macho", true, false);
+		animalArray[2] = new Gato("Don Gato", 2, "Macho", false, false);
 		
 		//Ejercicio 1
-		System.out.println("EJERCICIO 1");
-		System.out.println("Elemento en la posicion 5 del arreglo: "+integerArray1[5]);
-		 
+		pez.Comer();
+		pez.Dormir();
+		
+		perro.Comer();
+		perro.Dormir();
+		
+		gato.Comer();
+		gato.Dormir();
+		
 		//Ejercicio 2
-		System.out.println("\nEJERCICIO 2");
-		integerArray2 = new int[5];
-		 
-		System.out.print("Elementos del arreglo en ceros: {");
-		for(int i=0; i<5; i++)
-		{
-			if(i!=4)
-				System.out.print(integerArray2[i]+",");
-			else
-				System.out.println(integerArray2[i]+"}");
-		}
-		 
-		for (int x=0;x<integerArray2.length;x++)
-			integerArray2[x] = (int) (gen.nextDouble()*20);
-		 
-		System.out.print("Elementos del arreglo con numeros aleatorios: {");
-		for(int i=0; i<5; i++)
-		{
-			if(i!=4)
-				System.out.print(integerArray2[i]+",");
-			else
-				System.out.println(integerArray2[i]+"}");
-		}
-		 
+		animal.Comer();
+		animal.Dormir();
+		//La siguiente linea no es valida porque es un metodo exclusivo de Perro
+		//animal.Ladrar();
+		
 		//Ejercicio 3
-		System.out.println("\nEJERCICIO 3");
-		System.out.println("Elementos del arreglo 1 de animales");
-		for (int j = 0; j<arreglo1.length; j++)
-		{
-			System.out.println("	Nombre: "+arreglo1[j].nombre);
-			System.out.println("	Edad: "+arreglo1[j].edad+"\n");
+		for(Animal a: animalArray) {
+			a.Comer();
 		}
-		 
-		System.out.println("Elementos del arreglo 2 de animales");
-		for (int j = 0; j<arreglo2.length; j++)
-		{
-			System.out.println("	Nombre: "+arreglo2[j].nombre);
-			System.out.println("	Edad: "+arreglo2[j].edad+"\n");
+		
+		//Ejercicio 4
+		for(Animal a: animalArray) {
+			a.Comer();
+			
+			if (a instanceof Perro) {
+				((Perro)a).Ladrar();
+			}
 		}
-		 
-		//Ejercicio 5
-		System.out.println("\nEJERCICIO 5");
-		System.out.println("Elementos del objeto tipo Pez");
-		System.out.println("	Nombre: "+pez1.getNombre());
-		System.out.println("	Edad: "+pez1.getEdad());
-		System.out.println("	Edad: "+pez1.getClase());
 	}
 }
