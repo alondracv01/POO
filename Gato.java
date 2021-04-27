@@ -1,17 +1,16 @@
-package practica6;
+package Ejercicios;
 
 public class Gato extends Animal{
 
-	public Gato(String nombre, int edad, String sexo, boolean vacunado, boolean sedado){
-		super(nombre, edad, sexo, vacunado, sedado);
+	public Gato(String nombre, int edad, String sexo){
+		super(nombre, edad, sexo);
 	}
 	
-	@Override
-	public void Comer(){
+	public void eat(){
 	System.out.println(nombre +" esta comiendo whiskas");
 	}
 	
-	public void Maullar(){
-		System.out.println(nombre +" esta maullando: \"Miau miau\"");
+	public void sleep(){
+		System.out.println(nombre +" esta durmiendo");
 	}
 }

@@ -1,17 +1,16 @@
-package practica6;
+package Ejercicios;
 
 public class Perro extends Animal{
 
-	public Perro(String nombre, int edad, String sexo, boolean vacunado, boolean sedado){
-		super(nombre, edad, sexo, vacunado, sedado);
+	public Perro(String nombre, int edad, String sexo){
+		super(nombre, edad, sexo);
 	}
 	
-	@Override
-	public void Comer(){
+	public void eat(){
 		System.out.println(nombre +" esta comiendo pedigree");
 	}
 
-	public void Ladrar(){
-		System.out.println(nombre +" esta ladrando: \"Guau guau\"");
+	public void sleep(){
+		System.out.println(nombre +" esta acostado en su cama");
 	}
 }

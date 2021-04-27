@@ -1,62 +1,57 @@
-package practica6;
+package Ejercicios;
 
 public class Principal {
 	public static void main(String[] args) {
-		int opc;
-		Zoo zoo = new Zoo();
-		Veterinario veterinario = new Veterinario("Arturo Lopez", 2000);
+	//Ejercicio 1
+	//No se puede compilar porque se crea un objeto de una clase abstracta
+		//Animal animal = new Animal("Daisy", 5, "Hembra");
+	
+	//Ejercicio 2
+		Perro perro1 = new Perro("Daisy", 5, "Hembra");
+		Perro perro2 = new Perro("Sam", 6, "Macho");
+		Gato gato = new Gato("Don gato", 3, "Macho");
+		Animal[] animales = new Animal[] {perro1, gato, perro2};
+	//Ejercicio 3
+		Car carro = new Car("Toyota");
+	//Ejercicio 4
+		Safety c = new Car("Ferrari");
 		
-		do {
-			System.out.println("\nMenu");
-			System.out.println("1. Agregar animal");
-			System.out.println("2. Eliminar animal");
-			System.out.println("3. Mostrar todos los animales");
-			System.out.println("4. Mostrar un animal");
-			System.out.println("5. Vacunar a los animales");
-			System.out.println("6. Revisar a los animales");
-			System.out.println("7. Tomar muestra de sangre a los animales");
-			System.out.println("8. Sedar a los animales");
-			System.out.println("9. Salir");
-			opc = CapturaEntrada.capturarEntero("Numero de accion que desea realizar");
-			
-			switch(opc) {
-			case 1:
-				zoo.agregarAnimal();
-				break;
-			case 2:
-				zoo.eliminarAnimal();
-				break;
-			case 3:
-				zoo.mostrarAnimales();
-				break;
-			case 4:
-				zoo.mostrarAnimal();
-				break;
-			case 5:
-				for(int i=0; i<zoo.animales.size(); i++) {
-					veterinario.vacunar(zoo.animales.get(i));
-				}
-				break;
-			case 6:
-				for(int i=0; i<zoo.animales.size(); i++) {
-					veterinario.revisar(zoo.animales.get(i));
-				}
-				break;
-			case 7:
-				for(int i=0; i<zoo.animales.size(); i++) {
-					veterinario.tomarMuestra(zoo.animales.get(i));
-				}
-				break;
-			case 8:
-				for(int i=0; i<zoo.animales.size(); i++) {
-					veterinario.sedar(zoo.animales.get(i));
-				}
-				break;
-			case 9:
-				break;
-			default:
-				System.out.println("\nOpcion no valida");
-			}
-		}while(opc != 9);
+	//Ejercicio 2
+		/*Con la instruccion "for" funciona bien, se imprimen los atributos 
+		 correctos de cada uno y en el metodo se imprime lo que se esperaba*/
+		for(int i=0; i<animales.length; i++) {
+			System.out.println("\nNombre del animal "+(i+1)+": "+animales[i].nombre);
+			System.out.println("Edad del animal "+(i+1)+": "+animales[i].edad);
+			System.out.println("Genero del animal "+(i+1)+": "+animales[i].sexo);
+			animales[i].eat();
+		}
+		
+		//Al realizar las intrucciones una por una funciona de la misma manera
+		System.out.println("\nNombre del animal "+1+": "+animales[0].nombre);
+		System.out.println("Edad del animal "+1+": "+animales[0].edad);
+		System.out.println("Genero del animal "+1+": "+animales[0].sexo);
+		animales[0].eat();
+		
+		System.out.println("\nNombre del animal "+2+": "+animales[1].nombre);
+		System.out.println("Edad del animal "+2+": "+animales[1].edad);
+		System.out.println("Genero del animal "+2+": "+animales[1].sexo);
+		animales[1].eat();
+		
+		System.out.println("\nNombre del animal "+3+": "+animales[2].nombre);
+		System.out.println("Edad del animal "+3+": "+animales[2].edad);
+		System.out.println("Genero del animal "+3+": "+animales[2].sexo);
+		animales[2].eat();
+		
+	//Ejercicio 3
+		System.out.println("\n");
+		carro.start();
+		carro.bloquearCinturones();
+		carro.accelerate();
+	//Ejercicio 4
+		c.checarCinturones();
+		//La siguiente linea esta incorrecta
+		//c.start();
+		//Para poder utilizar el metodo start() el objeto debe ser de tipo Car
+		
 	}
 }
