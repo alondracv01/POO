@@ -1,57 +1,51 @@
-package Ejercicios;
+package practica;
+
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 public class Principal {
-	public static void main(String[] args) {
-	//Ejercicio 1
-	//No se puede compilar porque se crea un objeto de una clase abstracta
-		//Animal animal = new Animal("Daisy", 5, "Hembra");
-	
-	//Ejercicio 2
-		Perro perro1 = new Perro("Daisy", 5, "Hembra");
-		Perro perro2 = new Perro("Sam", 6, "Macho");
-		Gato gato = new Gato("Don gato", 3, "Macho");
-		Animal[] animales = new Animal[] {perro1, gato, perro2};
-	//Ejercicio 3
-		Car carro = new Car("Toyota");
-	//Ejercicio 4
-		Safety c = new Car("Ferrari");
+
+	public static void main(String[] args) throws ExcepcionMaximo {
+		int [] calif1 = new int [7];
+		int [] calif2 = new int [7];
+		int [] calif3 = new int [7];
+		Alumno alum1;
+		Alumno alum2;
+		Alumno alum3;
+		ArrayList <Alumno> alumnos = new ArrayList<Alumno>();
+		Archivo arch = new Archivo();
+		ArrayList <Integer> calif = arch.lecturaArchivo();
 		
-	//Ejercicio 2
-		/*Con la instruccion "for" funciona bien, se imprimen los atributos 
-		 correctos de cada uno y en el metodo se imprime lo que se esperaba*/
-		for(int i=0; i<animales.length; i++) {
-			System.out.println("\nNombre del animal "+(i+1)+": "+animales[i].nombre);
-			System.out.println("Edad del animal "+(i+1)+": "+animales[i].edad);
-			System.out.println("Genero del animal "+(i+1)+": "+animales[i].sexo);
-			animales[i].eat();
+		for(int i=0; i<calif.size(); i++) {
+			if(i<7)
+				calif1[i] = calif.get(i);
+			if(i>=7 && i<=13)
+				calif2[i-7] = calif.get(i);
+			if(i>13)
+				calif3[i-14] = calif.get(i);
 		}
+		alum1 = new Alumno("Leon Leiden", "1234567", calif1);
+		alum2 = new Alumno("Gustavo Vazquez", "1029384", calif2);
+		alum3 = new Alumno("Selena Gomez", "1230986", calif3);
 		
-		//Al realizar las intrucciones una por una funciona de la misma manera
-		System.out.println("\nNombre del animal "+1+": "+animales[0].nombre);
-		System.out.println("Edad del animal "+1+": "+animales[0].edad);
-		System.out.println("Genero del animal "+1+": "+animales[0].sexo);
-		animales[0].eat();
+		alumnos.add(alum1);
+		alumnos.add(alum2);
+		alumnos.add(alum3);
 		
-		System.out.println("\nNombre del animal "+2+": "+animales[1].nombre);
-		System.out.println("Edad del animal "+2+": "+animales[1].edad);
-		System.out.println("Genero del animal "+2+": "+animales[1].sexo);
-		animales[1].eat();
+		alum1.mostrarDatos();
+		alum2.mostrarDatos();
+		alum3.mostrarDatos();
 		
-		System.out.println("\nNombre del animal "+3+": "+animales[2].nombre);
-		System.out.println("Edad del animal "+3+": "+animales[2].edad);
-		System.out.println("Genero del animal "+3+": "+animales[2].sexo);
-		animales[2].eat();
-		
-	//Ejercicio 3
-		System.out.println("\n");
-		carro.start();
-		carro.bloquearCinturones();
-		carro.accelerate();
-	//Ejercicio 4
-		c.checarCinturones();
-		//La siguiente linea esta incorrecta
-		//c.start();
-		//Para poder utilizar el metodo start() el objeto debe ser de tipo Car
-		
+		//Guardar en archivo
+		try {
+			FileOutputStream f = new FileOutputStream("Alumnos.txt");
+            ObjectOutputStream escribir = new ObjectOutputStream(f);
+            escribir.writeObject(alumnos);
+            escribir.close();
+            System.out.println("Se genero el archivo con los datos");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 	}
 }
